@@ -12,7 +12,6 @@ class AuthController < ApplicationController
     if User.valid_credentials?(username, password)
       session[:userid] = username
       session[:session] = 1
-      p session
       render status: 200, nothing: true
     else
       render status: 401, nothing: true
