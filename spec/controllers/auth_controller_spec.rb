@@ -1,13 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe AuthController, :type => :controller do
+  let(:hello_word_response) { { hello: "world" } }
   let(:valid_credentials) { { username: "ironman", password: "password1" } }
   let(:invalid_credentials) { { username: "ironman", password: "wrong password" } }
 
   describe "GET hello" do
-    it "should return a success status 200" do
+    before :each do
       get :hello
+    end
+
+    it "should return a success status 200" do
       expect(response.status).to eq 200
+    end
+
+    it "should return the correct response" do
+      expect(response.body).to eq hello_word_response.to_json
     end
   end
 
