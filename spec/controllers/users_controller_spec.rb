@@ -7,6 +7,10 @@ RSpec.describe UsersController, :type => :controller do
       get :index
     end
 
+    it "should return a successful status 200" do
+      expect(response.status).to eq 200
+    end
+
     it "should return a json response" do
       expect(response.header['Content-Type']).to include 'application/json'
     end
